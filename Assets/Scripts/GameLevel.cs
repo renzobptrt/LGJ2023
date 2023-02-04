@@ -14,21 +14,12 @@ public class GameLevel : MonoBehaviour
     //Data
     public DataLevelStatsClass m_DataLevelStats = new DataLevelStatsClass();
 
-    //UI
-    [SerializeField] private List<Button> m_ListItems = new List<Button>();
-    [SerializeField] private Image background;
-    [SerializeField] private Image rootOk;
-    [SerializeField] private Image rootSick;
-    [SerializeField] private GameObject comboPrefabToDo;
-    [SerializeField] private GameObject comboPrefabDone;
-    [SerializeField] private GameObject comboBar;
-
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            //DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -38,19 +29,8 @@ public class GameLevel : MonoBehaviour
 
     private void Start()
     {
-       /*for(int i=0; i< m_ListItems.Count; i++)
-       {
-            int temp = i;
-            m_ListItems[temp].onClick.RemoveAllListeners();
-            m_ListItems[temp].onClick.AddListener(
-                ()=> CheckIndexOfReference(temp)
-            );
-       } */
-
-       SetRandomIndex();
-       //Prueba de DOTween
-       //Transform parent = m_TextToShowReference.transform.parent.transform.parent;
-       //parent.GetComponent<RectTransform>().DOAnchorPosY(200,4f,true).SetDelay(2f);
+        //Set First Index
+        SetRandomIndex();
     }
 
     public void AddListItems(Button newButton, int index)
@@ -71,7 +51,6 @@ public class GameLevel : MonoBehaviour
 
     public void CheckIndexOfReference(int index)
     {   
-        Debug.Log(index + "  " + m_CurrentRandom);
         if(index == m_CurrentRandom)
         {
             m_CurrentIndexOfReference++;
@@ -88,11 +67,6 @@ public class GameLevel : MonoBehaviour
                     //Pasar al siguiente nivel
                     m_CurrentIndexOfReference = 0;
                     DataSubLevelStatsClass currLevel = m_DataLevelStats.m_NumSubLevelsData[m_CurrentSubLevel];
-                    // combos = new List<GameObject>();
-                    // for (int i = 0; i < currLevel.m_NumCorrect; i++)
-                    // {
-                    //     combos.Add( Instantiate(comboPrefabToDo, Vector2.zero, comboPrefabToDo.transform.rotation, comboBar.transform) );
-                    // }
                     background.sprite = currLevel.background;
                     rootOk.sprite = currLevel.rootOk;
                     rootSick.sprite = currLevel.rootSick;
@@ -106,15 +80,13 @@ public class GameLevel : MonoBehaviour
         {
             m_CurrentIndexOfReference = m_CurrentIndexOfReference == 0 ? 0 : m_CurrentIndexOfReference - 1;
         }
-        //Debug.Log("Racha: " + m_CurrentIndexOfReference);
-        // m_TextToShowCombo.text = "x"+m_CurrentIndexOfReference.ToString();
+
     }
 
     public void SetRandomIndex()
     {
         m_CurrentRandom = Random.Range(0,3);
         m_currentCombImg.sprite = blocksPrefabs[m_CurrentRandom].gameObject.GetComponent<Image>().sprite;
-        // m_TextToShowReference.text = m_CurrentRandom == 0 ? "Negro" : (m_CurrentRandom == 1 ? "Rojo" : "Verde");
     }
 
     //Private variables
@@ -122,6 +94,15 @@ public class GameLevel : MonoBehaviour
     private int m_CurrentIndexOfReference = 0;
     private int m_CurrentRandom = 0;
     [SerializeField] Image m_currentCombImg;
+
+    //UI
+    [SerializeField] private List<Button> m_ListItems = new List<Button>();
+    [SerializeField] private Image background;
+    [SerializeField] private Image rootOk;
+    [SerializeField] private Image rootSick;
+    [SerializeField] private GameObject comboPrefabToDo;
+    [SerializeField] private GameObject comboPrefabDone;
+    [SerializeField] private GameObject comboBar;
 
     //SubClasses
     [System.Serializable]

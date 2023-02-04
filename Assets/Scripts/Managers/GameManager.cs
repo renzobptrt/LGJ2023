@@ -45,9 +45,9 @@ public class GameManager : MonoBehaviour
     public void StartCanvaReady()
     {
         m_ButtonLestGo.interactable = false;
+        canvas.blocksRaycasts = true;
         m_TextCount.transform.GetComponent<RectTransform>().localScale = Vector3.one;
         canvas.DOFade(1f,0.5f).OnComplete(()=>{
-            canvas.blocksRaycasts = true;
             m_ButtonLestGo.interactable = true;
         });
     }
