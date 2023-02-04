@@ -97,7 +97,7 @@ public class GameLevel : MonoBehaviour
                     rootOk.sprite = currLevel.rootOk;
                     rootSick.sprite = currLevel.rootSick;
                     blocksPrefabs.Add(currLevel.newSnake);
-                    Debug.Log("Pasaste siguiente nivel");
+                    GameManager.instance.StartCanvaReady();
                 }
             }
             SetRandomIndex();

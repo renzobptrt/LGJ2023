@@ -79,5 +79,5 @@ public class GameManager : MonoBehaviour
     }
 
     public RectTransform m_PanelUI = null;
-    public CanvasGroup canvas = null;
+    private CanvasGroup canvas = null;
 }
