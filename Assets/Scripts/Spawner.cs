@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
-    public List<GameObject> blocksPrefabs;
+    [SerializeField] GameLevel gLevel;
     [SerializeField] float bound;
     [SerializeField] float yTop;
     [SerializeField] bool won = false;
@@ -13,18 +13,10 @@ public class Spawner : MonoBehaviour
 
     void Awake()
     {
-        // float camHalfHeight = Camera.main.orthographicSize;
-        // float camHalfWidth = Camera.main.aspect * camHalfHeight;
-        // Vector3 bSize = blocksPrefabs[0].GetComponent<Renderer>().bounds.size;
-        // bound = camHalfWidth - (bSize.x/2);
-        // yTop = camHalfHeight - (bSize.y/2);
         Vector2 currSize = GetComponent<RectTransform>().sizeDelta;
-        Vector2 bSize = blocksPrefabs[0].GetComponent<RectTransform>().sizeDelta;
+        Vector2 bSize = gLevel.blocksPrefabs[0].GetComponent<RectTransform>().sizeDelta;
         bound = (Screen.width + currSize.x - bSize.x)/2;
-        yTop = (Screen.height + currSize.y - bSize.y)/2;
-        // transform.position = new Vector3(0, yTop, 0);
-
-        
+        yTop = (Screen.height + currSize.y + bSize.y)/2;
     }
 
     void Start()
@@ -36,8 +28,8 @@ public class Spawner : MonoBehaviour
     {
         while(!won)
         {
-            int typeBlock = Random.Range(0,blocksPrefabs.Count);
-            GameObject block = blocksPrefabs[typeBlock];
+            int typeBlock = Random.Range(0,gLevel.blocksPrefabs.Count);
+            GameObject block = gLevel.blocksPrefabs[typeBlock];
             block = Instantiate(block, Vector2.zero, block.transform.rotation, gameObject.transform);
             block.GetComponent<Serpent>().speed = speed;
 

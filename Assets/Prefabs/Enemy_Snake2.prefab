@@ -9,15 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4138395873301767688, guid: e174964ae71a99c47937b9363247b858, type: 3}
       propertyPath: m_Name
-      value: Enemy1
+      value: Enemy_Snake2
       objectReference: {fileID: 0}
     - target: {fileID: 4664968730599251099, guid: e174964ae71a99c47937b9363247b858, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dc8678c454148ad4cbd698d6fbbf948a, type: 3}
+    - target: {fileID: 4664968730599251099, guid: e174964ae71a99c47937b9363247b858, type: 3}
       propertyPath: m_Color.b
-      value: 0.081189156
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4664968730599251099, guid: e174964ae71a99c47937b9363247b858, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4664968730599251099, guid: e174964ae71a99c47937b9363247b858, type: 3}
       propertyPath: m_Color.r
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5022397350511082818, guid: e174964ae71a99c47937b9363247b858, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 64
+      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 5022397350511082818, guid: e174964ae71a99c47937b9363247b858, type: 3}
       propertyPath: m_SizeDelta.y

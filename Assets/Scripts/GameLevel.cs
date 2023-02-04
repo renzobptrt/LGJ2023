@@ -7,14 +7,21 @@ using DG.Tweening;
 
 public class GameLevel : MonoBehaviour
 {
+    
+    public List<GameObject> blocksPrefabs;
+    // public List<GameObject> combos;
     public static GameLevel instance;
     //Data
     public DataLevelStatsClass m_DataLevelStats = new DataLevelStatsClass();
 
     //UI
     [SerializeField] private List<Button> m_ListItems = new List<Button>();
-    [SerializeField] private TextMeshProUGUI m_TextToShowReference = null;
-    [SerializeField] private TextMeshProUGUI m_TextToShowCombo = null;
+    [SerializeField] private Image background;
+    [SerializeField] private Image rootOk;
+    [SerializeField] private Image rootSick;
+    [SerializeField] private GameObject comboPrefabToDo;
+    [SerializeField] private GameObject comboPrefabDone;
+    [SerializeField] private GameObject comboBar;
 
     private void Awake()
     {
@@ -80,6 +87,16 @@ public class GameLevel : MonoBehaviour
                 {
                     //Pasar al siguiente nivel
                     m_CurrentIndexOfReference = 0;
+                    DataSubLevelStatsClass currLevel = m_DataLevelStats.m_NumSubLevelsData[m_CurrentSubLevel];
+                    // combos = new List<GameObject>();
+                    // for (int i = 0; i < currLevel.m_NumCorrect; i++)
+                    // {
+                    //     combos.Add( Instantiate(comboPrefabToDo, Vector2.zero, comboPrefabToDo.transform.rotation, comboBar.transform) );
+                    // }
+                    background.sprite = currLevel.background;
+                    rootOk.sprite = currLevel.rootOk;
+                    rootSick.sprite = currLevel.rootSick;
+                    blocksPrefabs.Add(currLevel.newSnake);
                     Debug.Log("Pasaste siguiente nivel");
                 }
             }
@@ -90,19 +107,21 @@ public class GameLevel : MonoBehaviour
             m_CurrentIndexOfReference = m_CurrentIndexOfReference == 0 ? 0 : m_CurrentIndexOfReference - 1;
         }
         //Debug.Log("Racha: " + m_CurrentIndexOfReference);
-        m_TextToShowCombo.text = "x"+m_CurrentIndexOfReference.ToString();
+        // m_TextToShowCombo.text = "x"+m_CurrentIndexOfReference.ToString();
     }
 
     public void SetRandomIndex()
     {
         m_CurrentRandom = Random.Range(0,3);
-        m_TextToShowReference.text = m_CurrentRandom == 0 ? "Negro" : (m_CurrentRandom == 1 ? "Rojo" : "Verde");
+        m_currentCombImg.sprite = blocksPrefabs[m_CurrentRandom].gameObject.GetComponent<Image>().sprite;
+        // m_TextToShowReference.text = m_CurrentRandom == 0 ? "Negro" : (m_CurrentRandom == 1 ? "Rojo" : "Verde");
     }
 
     //Private variables
     private int m_CurrentSubLevel= 0;
     private int m_CurrentIndexOfReference = 0;
     private int m_CurrentRandom = 0;
+    [SerializeField] Image m_currentCombImg;
 
     //SubClasses
     [System.Serializable]
@@ -115,6 +134,10 @@ public class GameLevel : MonoBehaviour
     public class DataSubLevelStatsClass
     {
         public int m_NumCorrect = 0;
+        public Sprite background;
+        public Sprite rootSick;
+        public Sprite rootOk;
+        public GameObject newSnake;
     }
 
 }
