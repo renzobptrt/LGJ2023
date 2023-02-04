@@ -112,7 +112,7 @@ public class GameLevel : MonoBehaviour
 
     public void SetRandomIndex()
     {
-        m_CurrentRandom = Random.Range(0,3);
+        m_CurrentRandom = Random.Range(0,blocksPrefabs.Count);
         m_currentCombImg.sprite = blocksPrefabs[m_CurrentRandom].gameObject.GetComponent<Image>().sprite;
         // m_TextToShowReference.text = m_CurrentRandom == 0 ? "Negro" : (m_CurrentRandom == 1 ? "Rojo" : "Verde");
     }

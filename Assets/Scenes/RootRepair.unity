@@ -1212,4 +1212,5 @@ MonoBehaviour:
   rootSick: {fileID: 1636793583}
   comboPrefabToDo: {fileID: 2740061973380646817, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
   comboPrefabDone: {fileID: 44073610301114963, guid: eb764a94c9c07ab48917bb3667d09e77, type: 3}
+  comboBar: {fileID: 1865983584}
   m_currentCombImg: {fileID: 210301843}
