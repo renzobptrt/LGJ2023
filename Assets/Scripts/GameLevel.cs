@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using DG.Tweening;
+
 
 public class GameLevel : MonoBehaviour
 {
@@ -64,7 +64,6 @@ public class GameLevel : MonoBehaviour
 
     public void CheckIndexOfReference(int index)
     {   
-        Debug.Log(index + "  " + m_CurrentRandom);
         if(index == m_CurrentRandom)
         {
             m_CurrentIndexOfReference++;
@@ -78,7 +77,7 @@ public class GameLevel : MonoBehaviour
                 }
                 else
                 {
-                    //Pasar al siguiente nivel
+                    //Pasar al siguiente nivel, añadir transicion con DOTween
                     m_CurrentIndexOfReference = 0;
                     Debug.Log("Pasaste siguiente nivel");
                 }
@@ -89,7 +88,7 @@ public class GameLevel : MonoBehaviour
         {
             m_CurrentIndexOfReference = m_CurrentIndexOfReference == 0 ? 0 : m_CurrentIndexOfReference - 1;
         }
-        //Debug.Log("Racha: " + m_CurrentIndexOfReference);
+        
         m_TextToShowCombo.text = "x"+m_CurrentIndexOfReference.ToString();
     }
 
