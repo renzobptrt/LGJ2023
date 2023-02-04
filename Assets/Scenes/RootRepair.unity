@@ -485,7 +485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &303630472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -602,18 +602,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerToDo (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 2740061973380646817, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2740061973380646819, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
-      propertyPath: m_Color.a
-      value: 0.8666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2740061973380646819, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
 --- !u!114 &523159802 stripped
@@ -726,18 +714,6 @@ PrefabInstance:
     - target: {fileID: 2740061973380646817, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
       propertyPath: m_Name
       value: PowerToDo (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2740061973380646817, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2740061973380646819, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
-      propertyPath: m_Color.a
-      value: 0.8666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2740061973380646819, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
@@ -1203,18 +1179,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerToDo (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 2740061973380646817, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2740061973380646819, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
-      propertyPath: m_Color.a
-      value: 0.8666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2740061973380646819, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
 --- !u!224 &1319121071 stripped
@@ -1616,18 +1580,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerToDo (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 2740061973380646817, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2740061973380646819, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
-      propertyPath: m_Color.a
-      value: 0.8666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2740061973380646819, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dc1cdd529a33924b9bf65f7d333ae74, type: 3}
 --- !u!224 &1645964290 stripped
@@ -1931,7 +1883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding: {x: 0, y: 0, z: 0, w: 617.6}
+  m_Padding: {x: 0, y: 0, z: 0, w: 504.72}
   m_Softness: {x: 0, y: 0}
 --- !u!222 &1764152907
 CanvasRenderer:

@@ -10,9 +10,11 @@ public class GameLevel : MonoBehaviour
     
     public List<GameObject> blocksPrefabs;
     // public List<GameObject> combos;
+    public RectMask2D rmComboHealth;
     public static GameLevel instance;
     //Data
     public DataLevelStatsClass m_DataLevelStats = new DataLevelStatsClass();
+    float rootHealHeight = 0;
 
     private void Awake()
     {
@@ -25,6 +27,10 @@ public class GameLevel : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        //HEIGHT | Altura por cantidad de combos del nivel actual
+        rootHealHeight = rmComboHealth.canvasRect.height / m_DataLevelStats.m_NumSubLevelsData.Count;
+        rmComboHealth.padding = new Vector4( 0,0,0,rmComboHealth.canvasRect.height );
     }
 
     private void Start()
@@ -59,6 +65,7 @@ public class GameLevel : MonoBehaviour
             if(m_CurrentIndexOfReference >= m_DataLevelStats.m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect)
             {
                 m_CurrentSubLevel++;
+                rmComboHealth.padding = new Vector4( 0,0,0,rmComboHealth.padding.w - rootHealHeight );
                 GameManager.instance.StartListSpritesForPower(m_DataLevelStats.m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect);
                 //Cambiar sprite
 
