@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     {
         //Transform parent = m_TextToShowReference.transform.parent.transform.parent;
         //parent.GetComponent<RectTransform>().DOAnchorPosY(200,4f,true).SetDelay(2f);
+        m_ButtonLestGo.interactable = false;
         canvas.DOFade(1f,0.5f).OnComplete(()=>{
-            canvas.blocksRaycasts = false;
             AnimationCount(3);
         });
     }
@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
             });
         }
         else{
-            canvas.blocksRaycasts = true;
             canvas.DOFade(0f,0.5f).OnComplete(()=>{
                 canvas.blocksRaycasts = false;
             });
