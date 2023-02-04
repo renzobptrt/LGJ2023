@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class GameLevel : MonoBehaviour
 {
@@ -24,13 +25,18 @@ public class GameLevel : MonoBehaviour
        } 
 
        SetRandomIndex();
+       //Prueba de DOTween
+       Transform parent = m_TextToShowReference.transform.parent.transform.parent;
+       parent.GetComponent<RectTransform>().DOAnchorPosY(200,4f,true).SetDelay(2f);
     }
 
+    private void Update() {
+        
+    }
 
     private void SetSubLevel(int i){
         m_CurrentSubLevel = i;
     }
-
 
     public void CheckIndexOfReference(int index){
         if(index == m_CurrentRandom){
