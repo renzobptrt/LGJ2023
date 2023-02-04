@@ -467,7 +467,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ButtonLestGo: {fileID: 394189966}
+  m_TextCount: {fileID: 1368619996}
   m_PanelUI: {fileID: 1639915969}
+  canvas: {fileID: 1639915972}
 --- !u!4 &809344883
 Transform:
   m_ObjectHideFlags: 0
