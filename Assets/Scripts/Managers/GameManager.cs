@@ -13,7 +13,10 @@ public class GameManager : MonoBehaviour
 
     //Elements
     public Button m_ButtonLestGo = null;
-    [SerializeField] private TextMeshProUGUI m_TextCount = null;
+    public RectTransform m_PanelUI = null;
+
+    public List<Image> m_ListPowerToDo = new List<Image>();
+    public List<Sprite> m_ListSpritesForPower = new List<Sprite>();
 
     private void Awake()
     {
@@ -42,6 +45,20 @@ public class GameManager : MonoBehaviour
         canvas =  m_PanelUI.GetComponent<CanvasGroup>();
     }
     
+    public void StartListSpritesForPower(int count)
+    {
+        float newAlpha = 0f;
+
+        for(int i=0; i<m_ListPowerToDo.Count; i++)
+        {
+            newAlpha = (i < count) ? 1f : 0f;
+            Color newColor = m_ListPowerToDo[i].color;
+            newColor.a = newAlpha;
+            m_ListPowerToDo[i].color = newColor;
+            m_ListPowerToDo[i].sprite = m_ListSpritesForPower[0];
+        }
+    }
+
     public void StartCanvaReady()
     {
         m_ButtonLestGo.interactable = false;
@@ -78,6 +95,8 @@ public class GameManager : MonoBehaviour
         });
     }
 
-    public RectTransform m_PanelUI = null;
+
+    //Private Vari
+    [SerializeField] private TextMeshProUGUI m_TextCount = null;
     private CanvasGroup canvas = null;
 }

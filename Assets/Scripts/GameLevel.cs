@@ -31,6 +31,7 @@ public class GameLevel : MonoBehaviour
     {
         //Set First Index
         SetRandomIndex();
+        GameManager.instance.StartListSpritesForPower(m_DataLevelStats.m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect);
     }
 
     public void AddListItems(Button newButton, int index)
@@ -57,6 +58,9 @@ public class GameLevel : MonoBehaviour
             if(m_CurrentIndexOfReference >= m_DataLevelStats.m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect)
             {
                 m_CurrentSubLevel++;
+
+                //Cambiar sprite
+
                 if(m_CurrentSubLevel >= m_DataLevelStats.m_NumSubLevelsData.Count)
                 {
                     //Salir a pantalla final
