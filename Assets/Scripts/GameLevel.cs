@@ -11,8 +11,8 @@ public class GameLevel : MonoBehaviour
     public DataLevelStatsClass m_DataLevelStats = new DataLevelStatsClass();
 
     //UI
-    public List<Button> m_ListItems = new List<Button>();
-    public TextMeshProUGUI m_TextToShowReference = null;
+    [SerializeField] private List<Button> m_ListItems = new List<Button>();
+    [SerializeField] private TextMeshProUGUI m_TextToShowReference = null;
 
     private void Start() {
        for(int i=0; i< m_ListItems.Count; i++)
