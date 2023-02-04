@@ -30,10 +30,6 @@ public class GameLevel : MonoBehaviour
        parent.GetComponent<RectTransform>().DOAnchorPosY(200,4f,true).SetDelay(2f);
     }
 
-    private void Update() {
-        
-    }
-
     private void SetSubLevel(int i){
         m_CurrentSubLevel = i;
     }
