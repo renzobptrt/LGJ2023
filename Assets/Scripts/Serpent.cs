@@ -34,10 +34,10 @@ public class Serpent : MonoBehaviour
         }
     }
 
-    void OnMouseDown()
-    {
-        Destroy(gameObject);
-    }
+    // void OnMouseDown()
+    // {
+    //     Destroy(gameObject);
+    // }
 
     //Private
     [SerializeField] private float maxY;
