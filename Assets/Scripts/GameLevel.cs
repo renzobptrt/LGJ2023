@@ -54,11 +54,12 @@ public class GameLevel : MonoBehaviour
     {   
         if(index == m_CurrentRandom)
         {
+            GameManager.instance.SetDoneSpritesForPower(m_CurrentIndexOfReference);
             m_CurrentIndexOfReference++;
             if(m_CurrentIndexOfReference >= m_DataLevelStats.m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect)
             {
                 m_CurrentSubLevel++;
-
+                GameManager.instance.StartListSpritesForPower(m_DataLevelStats.m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect);
                 //Cambiar sprite
 
                 if(m_CurrentSubLevel >= m_DataLevelStats.m_NumSubLevelsData.Count)
@@ -75,7 +76,9 @@ public class GameLevel : MonoBehaviour
                     rootOk.sprite = currLevel.rootOk;
                     rootSick.sprite = currLevel.rootSick;
                     blocksPrefabs.Add(currLevel.newSnake);
+                    
                     GameManager.instance.StartCanvaReady();
+
                 }
             }
             SetRandomIndex();
