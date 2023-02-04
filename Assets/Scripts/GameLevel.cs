@@ -79,6 +79,7 @@ public class GameLevel : MonoBehaviour
                 {
                     //Pasar al siguiente nivel, añadir transicion con DOTween
                     m_CurrentIndexOfReference = 0;
+                    GameManager.instance.StartCanvaReady();
                     Debug.Log("Pasaste siguiente nivel");
                 }
             }

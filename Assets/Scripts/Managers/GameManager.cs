@@ -8,45 +8,67 @@ using static Callbacks;
 
 public class GameManager : MonoBehaviour
 {
-    
+    //Instance
+    public static GameManager instance;
+
     //Elements
     public Button m_ButtonLestGo = null;
     [SerializeField] private TextMeshProUGUI m_TextCount = null;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            //DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     void Start()
     {
         m_ButtonLestGo.onClick.RemoveAllListeners();
-        m_ButtonLestGo.onClick.AddListener(StartCanvaReady);
+        m_ButtonLestGo.onClick.AddListener(()=>{
+            AnimationCount(3,()=>{
+                    canvas.DOFade(0f,0.5f).OnComplete(()=>{
+                    canvas.blocksRaycasts = false;
+                });
+            });
+        });
         canvas =  m_PanelUI.GetComponent<CanvasGroup>();
         //StartCanvaReady();
     }
-
-    void StartCanvaReady()
+    
+    public void StartCanvaReady()
     {
         //Transform parent = m_TextToShowReference.transform.parent.transform.parent;
         //parent.GetComponent<RectTransform>().DOAnchorPosY(200,4f,true).SetDelay(2f);
         m_ButtonLestGo.interactable = false;
+        m_TextCount.transform.GetComponent<RectTransform>().localScale = Vector3.one;
         canvas.DOFade(1f,0.5f).OnComplete(()=>{
-            AnimationCount(3);
+            canvas.blocksRaycasts = true;
+            m_ButtonLestGo.interactable = true;
         });
     }
 
-    void AnimationCount(int numnber)
-    {
-        if(numnber>0)
+    void AnimationCount(int number, OnComplete onComplete = null)
+    {   
+        if(number>0)
         {
-            m_TextCount.text = numnber.ToString();
+            m_TextCount.text = number.ToString();
             m_TextCount.transform.GetComponent<RectTransform>().DOScale(1,0.5f).OnComplete(()=>{
                 m_TextCount.transform.GetComponent<RectTransform>().DOScale(0,0.5f).OnComplete(()=>{
-                    numnber--;
-                    AnimationCount(numnber);
+                    number--;
+                    AnimationCount(number,onComplete);
                 });
             });
         }
         else{
-            canvas.DOFade(0f,0.5f).OnComplete(()=>{
-                canvas.blocksRaycasts = false;
-            });
+            m_TextCount.text = "Ready?";
+            onComplete();
         }
     }
 
