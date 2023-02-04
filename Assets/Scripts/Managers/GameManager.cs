@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     {
         m_ButtonLestGo.onClick.RemoveAllListeners();
         m_ButtonLestGo.onClick.AddListener(()=>{
+            m_ButtonLestGo.interactable = false;
             AnimationCount(3,()=>{
                     canvas.DOFade(0f,0.5f).OnComplete(()=>{
                     canvas.blocksRaycasts = false;
@@ -39,13 +40,10 @@ public class GameManager : MonoBehaviour
             });
         });
         canvas =  m_PanelUI.GetComponent<CanvasGroup>();
-        //StartCanvaReady();
     }
     
     public void StartCanvaReady()
     {
-        //Transform parent = m_TextToShowReference.transform.parent.transform.parent;
-        //parent.GetComponent<RectTransform>().DOAnchorPosY(200,4f,true).SetDelay(2f);
         m_ButtonLestGo.interactable = false;
         m_TextCount.transform.GetComponent<RectTransform>().localScale = Vector3.one;
         canvas.DOFade(1f,0.5f).OnComplete(()=>{
