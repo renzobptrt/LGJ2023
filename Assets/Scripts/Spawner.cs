@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
@@ -23,6 +24,11 @@ public class Spawner : MonoBehaviour
         yTop = (Screen.height + currSize.y - bSize.y)/2;
         // transform.position = new Vector3(0, yTop, 0);
 
+        
+    }
+
+    void Start()
+    {
         StartCoroutine( Spawn() );
     }
 
@@ -34,6 +40,9 @@ public class Spawner : MonoBehaviour
             GameObject block = blocksPrefabs[typeBlock];
             block = Instantiate(block, Vector2.zero, block.transform.rotation, gameObject.transform);
             block.GetComponent<Serpent>().speed = speed;
+
+            GameLevel.instance.AddListItems(block.GetComponent<Button>(),typeBlock);
+
             float xPos = Random.Range(-bound,bound);
             block.GetComponent<RectTransform>().localPosition = new Vector3( xPos, yTop, 0);
             float t = Random.Range(1,2);

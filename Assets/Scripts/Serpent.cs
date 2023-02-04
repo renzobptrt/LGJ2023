@@ -6,16 +6,23 @@ using UnityEngine.UI;
 public class Serpent : MonoBehaviour
 {
     public float speed;
-    //TODO: get current
-    [SerializeField] float maxY;
+    public int m_IndexBlock = 0;
 
     void Awake()
     {
         // maxY = Camera.main.orthographicSize;
         Vector2 currSize = GetComponent<RectTransform>().sizeDelta;
         maxY = currSize.y;
-        Button btn = GetComponent<Button>();
-        btn.onClick.AddListener(OnMouseDown);
+        
+        //
+        //btn.onClick.AddListener(OnMouseDown);
+    }
+
+    void Start()
+    {
+        Button btn = this.gameObject.GetComponent<Button>();
+        //if(btn != null)
+            //GameLevel.instance.AddListItems(btn,m_IndexBlock);
     }
     
     void Update()
@@ -31,4 +38,8 @@ public class Serpent : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    //Private
+    [SerializeField] private float maxY;
+
 }
