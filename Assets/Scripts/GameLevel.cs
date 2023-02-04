@@ -88,7 +88,7 @@ public class GameLevel : MonoBehaviour
         {
             m_CurrentIndexOfReference = m_CurrentIndexOfReference == 0 ? 0 : m_CurrentIndexOfReference - 1;
         }
-        
+
         m_TextToShowCombo.text = "x"+m_CurrentIndexOfReference.ToString();
     }
 
