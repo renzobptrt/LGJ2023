@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
         prevLvl = gLevel.m_currentLevel;
     }
 
-    public void StartSpawn()
+    public void Start()
     {
         StartCoroutine( Spawn() );
     }

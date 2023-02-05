@@ -90,7 +90,7 @@ public class GameLevel : MonoBehaviour
                     //Eliminar a la ardilla
                     if (m_currentLevel == 0) blocksPrefabs.RemoveAt(0);
                     
-                    narrativeManager.ShowDialog();
+                    narrativeManager.ShowDialog(1);
                     DataLevelStatsClass currLevel = m_DataLevelStats[m_currentLevel];
                     background.sprite = currLevel.background;
                     rootOk.sprite = currLevel.rootOk;

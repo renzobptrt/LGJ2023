@@ -13,15 +13,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     //Elements
-    public Spawner spawner = null;
     public Button m_ButtonLestGo = null;
     public RectTransform m_PanelUI = null;
     public NarrativeManager narrativeManager = null;
 
     public List<Image> m_ListPowerToDo = new List<Image>();
     public List<Sprite> m_ListSpritesForPower = new List<Sprite>();
-
-    bool isFirstLevel = true;
 
     private void Awake()
     {
@@ -46,12 +43,6 @@ public class GameManager : MonoBehaviour
                     canvas.blocksRaycasts = false;
                 });
             });
-            if (isFirstLevel)
-            {
-                narrativeManager.ShowDialog();
-                spawner.StartSpawn();
-                isFirstLevel = false;
-            }
         });
         
         m_ButtonContinue.onClick.RemoveAllListeners();

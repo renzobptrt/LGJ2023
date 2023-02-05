@@ -18,39 +18,39 @@ public class NarrativeManager : MonoBehaviour
     {
         background = GetComponent<Image>();
         currentScene = 0;
-        ShowDialog();
+        ShowDialog(2);
     }
 
-    public void ShowDialog()
+    public void ShowDialog( int numScenes )
     {
         // didCurrSceneEnd = false;
         if(scenes[currentScene].background) background.sprite = scenes[currentScene].background;
         if(scenes[currentScene].character) character.sprite = scenes[currentScene].character;
         gameObject.SetActive(true);
-        StartCoroutine( NextDialog() );
+        StartCoroutine( NextDialog( numScenes ) );
     }
 
-    void EndDialog()
+    IEnumerator NextDialog( int scenesLeft )
     {
-        currentScene ++;
-        gameObject.SetActive(false);
-        // didCurrSceneEnd = true;
-    }
-
-    IEnumerator NextDialog()
-    {
-        foreach (string dialog in scenes[currentScene].dialogs)
+        while (scenesLeft > 0)
         {
-            tmpro.text = scenes[currentScene].charname + "\n" + dialog; 
-            yield return new WaitForSeconds(timePerDialog);
+            foreach (string dialog in scenes[currentScene].dialogs)
+            {
+                tmpro.text = scenes[currentScene].charname + "\n" + dialog; 
+                yield return new WaitForSeconds(timePerDialog);
+            }
+            currentScene ++;
+            scenesLeft--;
         }
-        EndDialog();
+        gameObject.SetActive(false);
     }
 
     public void SkipDialog()
     {
-        StopCoroutine( NextDialog() );
-        EndDialog();
+        // didCurrSceneEnd = true;
+        currentScene ++;
+        StopCoroutine( NextDialog(0) );
+        gameObject.SetActive(false);
     }
 
 
