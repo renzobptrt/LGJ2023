@@ -12,7 +12,7 @@ public class NarrativeManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI tmpro;
     public List<Scene> scenes;
     public float timePerDialog;
-    // public bool didCurrSceneEnd = false;
+    public bool didCurrSceneEnd = false;
 
     void Awake()
     {
@@ -23,7 +23,7 @@ public class NarrativeManager : MonoBehaviour
 
     public void ShowDialog( int numScenes )
     {
-        // didCurrSceneEnd = false;
+        didCurrSceneEnd = false;
         if(scenes[currentScene].background) background.sprite = scenes[currentScene].background;
         if(scenes[currentScene].character) character.sprite = scenes[currentScene].character;
         gameObject.SetActive(true);
@@ -47,7 +47,7 @@ public class NarrativeManager : MonoBehaviour
 
     public void SkipDialog()
     {
-        // didCurrSceneEnd = true;
+        didCurrSceneEnd = true;
         currentScene ++;
         StopCoroutine( NextDialog(0) );
         gameObject.SetActive(false);
