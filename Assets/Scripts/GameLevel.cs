@@ -68,6 +68,7 @@ public class GameLevel : MonoBehaviour
         //TODO: FIX INDEX OUT OF RANGE
         if(index == m_CurrentRandom)
         {
+            GameManager.instance.PlaySfxSound("RightChoice");
             GameManager.instance.SetSpritesForPower(m_CurrentIndexOfReference,1);
             m_CurrentIndexOfReference++;
             if(m_CurrentIndexOfReference >= m_DataLevelStats[m_currentLevel].m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect)
@@ -79,7 +80,7 @@ public class GameLevel : MonoBehaviour
                 m_CurrentSubLevel++;
                 
                 rmComboHealth.padding = new Vector4( 0,0,0,rmComboHealth.padding.w - rootHealHeight );
-
+                GameManager.instance.PlaySfxSound("CompleteSubLevel");
                 //Cambiar sprite
                 
                 if(m_CurrentSubLevel >= m_DataLevelStats[m_currentLevel].m_NumSubLevelsData.Count)
@@ -120,6 +121,7 @@ public class GameLevel : MonoBehaviour
         }
         else
         {
+            GameManager.instance.PlaySfxSound("WrongChoice");
             if(m_CurrentIndexOfReference == 0 )
             {
                 //Quitar vida
