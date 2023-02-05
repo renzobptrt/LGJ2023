@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
         prevLvl = gLevel.m_currentLevel;
     }
 
-    void Start()
+    public void StartSpawn()
     {
         StartCoroutine( Spawn() );
     }
@@ -34,11 +34,11 @@ public class Spawner : MonoBehaviour
 
             UpdateBlockSpeeds(speed);
 
-            int q = gLevel.m_currentLevel * (2 + gLevel.m_CurrentSubLevel) + 1;
+            int q = gLevel.m_currentLevel * (2 + gLevel.m_CurrentSubLevel);
+            q = Random.Range(0, q+2);
             for (int i = 0; i < q; i++) InstantiateBlock(speed);
             
-            float t = Random.Range(1,2);
-            yield return new WaitForSeconds(t);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 
