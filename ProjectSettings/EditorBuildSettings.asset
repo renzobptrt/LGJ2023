@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RootRepair.unity
     guid: a6fe3698c4a1def4083c53db10331da3
+  - enabled: 1
+    path: Assets/Scenes/EndGameScene.unity
+    guid: 69e77cbb3f4fbc540b7cc3b0df69aa10
   m_configObjects: {}
