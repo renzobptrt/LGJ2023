@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadMenu());
     }
     
-    void LoadMenu()
+    IEnumerator LoadMenu()
     {
         //ESPERAR a que se muestre el primer dialogo
         yield return new WaitForSeconds( narrativeManager.timePerDialog );
