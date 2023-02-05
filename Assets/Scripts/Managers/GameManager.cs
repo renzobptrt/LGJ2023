@@ -92,6 +92,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetLevelText(string newText)
+    {
+        m_TextLevel.text = "Level " + newText;
+    }
+
     void StartGameSubLevel()
     {
         canvas.blocksRaycasts = true;
@@ -103,5 +108,6 @@ public class GameManager : MonoBehaviour
 
     //Private Vari
     [SerializeField] private TextMeshProUGUI m_TextCount = null;
+    [SerializeField] private TextMeshProUGUI m_TextLevel = null;
     private CanvasGroup canvas = null;
 }
