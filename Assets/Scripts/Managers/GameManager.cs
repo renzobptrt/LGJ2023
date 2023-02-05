@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     //Elements
     public Button m_ButtonLestGo = null;
     public RectTransform m_PanelUI = null;
+    public NarrativeManager narrativeManager = null;
 
     public List<Image> m_ListPowerToDo = new List<Image>();
     public List<Sprite> m_ListSpritesForPower = new List<Sprite>();
@@ -38,7 +39,7 @@ public class GameManager : MonoBehaviour
         m_ButtonLestGo.onClick.AddListener(()=>{
             m_ButtonLestGo.interactable = false;
             AnimationCount(3,()=>{
-                    canvas.DOFade(0f,0.5f).OnComplete(()=>{
+                    canvas.DOFade(0f,0.25f).OnComplete(()=>{
                     canvas.blocksRaycasts = false;
                 });
             });
@@ -151,8 +152,8 @@ public class GameManager : MonoBehaviour
         if(number>0)
         {
             m_TextCount.text = number.ToString();
-            m_TextCount.transform.GetComponent<RectTransform>().DOScale(1,0.5f).OnComplete(()=>{
-                m_TextCount.transform.GetComponent<RectTransform>().DOScale(0,0.5f).OnComplete(()=>{
+            m_TextCount.transform.GetComponent<RectTransform>().DOScale(1,0.33f).OnComplete(()=>{
+                m_TextCount.transform.GetComponent<RectTransform>().DOScale(0,0.33f).OnComplete(()=>{
                     number--;
                     AnimationCount(number,onComplete);
                 });
