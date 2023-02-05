@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.SceneManagement;
 using static Callbacks;
 
 public class GameManager : MonoBehaviour
@@ -57,6 +58,11 @@ public class GameManager : MonoBehaviour
         m_CanvasRestart = m_PanelRestart.GetComponent<CanvasGroup>();
 
         m_NumLifes = m_ListLifes.Count;
+    }
+
+    public void LoadLevel(int levelIndex)
+    {
+        SceneManager.LoadScene(levelIndex);
     }
 
     public bool CheckWrongChoice()
