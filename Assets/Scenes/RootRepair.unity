@@ -4356,7 +4356,9 @@ MonoBehaviour:
     rootSick: {fileID: 21300000, guid: c4860bf02a5064f4db33b961178bf39f, type: 3}
     rootOk: {fileID: 21300000, guid: 015c3b8a75736f74db278bfa5739901e, type: 3}
     newSnake: {fileID: 0}
-    speed: 512
+    speed: 30
+  m_currentLevel: 2
+  m_CurrentSubLevel: 4
   m_currentCombImg: {fileID: 210301843}
   m_ListItems: []
   background: {fileID: 1760321969}

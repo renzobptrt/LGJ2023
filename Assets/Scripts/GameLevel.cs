@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameLevel : MonoBehaviour
 {
@@ -105,7 +106,7 @@ public class GameLevel : MonoBehaviour
                     if(m_currentLevel >= m_DataLevelStats.Count)
                     {
                         narrativeManager.ShowDialog(1,()=>{GameManager.instance.LoadLevel(2);});
-                        //GameManager.instance.LoadLevel(2);
+                        //);
                     }else
                     {
                         GameManager.instance.StartCanvaReady();

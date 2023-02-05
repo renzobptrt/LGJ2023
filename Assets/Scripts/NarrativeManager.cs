@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using static Callbacks;
+using UnityEngine.SceneManagement;
 
 public class NarrativeManager : MonoBehaviour
 {
@@ -49,11 +50,12 @@ public class NarrativeManager : MonoBehaviour
             scenesLeft--;
         }
 
+        onComplete();
         gameObject.SetActive(false);
 
         didCurrSceneEnd = true;
 
-        onComplete();
+
     }
 
     public void SkipDialog()
