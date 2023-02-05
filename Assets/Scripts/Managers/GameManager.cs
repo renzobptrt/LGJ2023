@@ -43,9 +43,18 @@ public class GameManager : MonoBehaviour
             });
         });
         
+        m_ButtonContinue.onClick.RemoveAllListeners();
+        m_ButtonContinue.onClick.AddListener(()=>{
+            m_ButtonContinue.interactable = false;
+            m_CanvasRestart.DOFade(0f,0.5f).OnComplete(()=>{
+                m_CanvasRestart.blocksRaycasts = false;
+            });
+            StartCanvaReady();
+        });
+
         //Canvas
         canvas =  m_PanelUI.GetComponent<CanvasGroup>();
-        m_CanvasRestart = m_PanelEnd.GetComponent<CanvasGroup>();
+        m_CanvasRestart = m_PanelRestart.GetComponent<CanvasGroup>();
 
         m_NumLifes = m_ListLifes.Count;
     }
@@ -57,7 +66,12 @@ public class GameManager : MonoBehaviour
         if(m_NumLifes<0)
         {
             //Pantalla fin
-            m_CanvasRestart.DOFade(1f,0.5f);
+            m_CanvasRestart.DOFade(1f,0.5f).OnComplete(()=>{
+                m_ButtonContinue.interactable = true;
+                m_CanvasRestart.blocksRaycasts = true;
+                RestartLife();
+            });
+
             return true;
         }
         else
@@ -69,8 +83,6 @@ public class GameManager : MonoBehaviour
             return false;
         }
     }
-
-
 
     public void RestartLife()
     {
@@ -154,8 +166,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_TextLevel = null;
     [SerializeField] private RectMask2D m_rmComboHealth = null;
     [SerializeField] private List<Image> m_ListLifes = new List<Image>();
-    [SerializeField] private RectTransform m_PanelEnd= null;
-    [SerializeField] private Button ContinueButton = null;
+    [SerializeField] private RectTransform m_PanelRestart= null;
+    [SerializeField] private Button m_ButtonContinue = null;
     private CanvasGroup canvas = null;
     private CanvasGroup m_CanvasRestart = null;
     private CanvasGroup m_CanvasFinish = null;
