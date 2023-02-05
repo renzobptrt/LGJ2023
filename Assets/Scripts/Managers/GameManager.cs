@@ -58,6 +58,21 @@ public class GameManager : MonoBehaviour
         m_CanvasRestart = m_PanelRestart.GetComponent<CanvasGroup>();
 
         m_NumLifes = m_ListLifes.Count;
+
+        //Music
+        PlayBackgroundSound("BGM_VisualNovel");
+    }
+
+    public void PlayBackgroundSound(string nameBackgroundMusic)
+    {
+        string FolderBackgroundName = "Audio/Sounds/Background/"+nameBackgroundMusic ;
+        SoundManager.instance.PlayBackground(FolderBackgroundName);
+    }
+
+    public void PlaySfxSound(string nameSfx)
+    {
+        string FolderSfxName = "Audio/Sounds/SFX/"+nameSfx ;
+        SoundManager.instance.PlaySfx(FolderSfxName);
     }
 
     public void LoadLevel(int levelIndex)
