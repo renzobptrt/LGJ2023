@@ -104,18 +104,22 @@ public class GameLevel : MonoBehaviour
 
                     if(m_currentLevel >= m_DataLevelStats.Count)
                     {
-                        GameManager.instance.LoadLevel(2);
+                        narrativeManager.ShowDialog(1,()=>{GameManager.instance.LoadLevel(2);});
+                        //GameManager.instance.LoadLevel(2);
                     }else
                     {
                         GameManager.instance.StartCanvaReady();
+                        GameManager.instance.StartListSpritesForPower(m_DataLevelStats[m_currentLevel].m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect);
+                        GameManager.instance.SetLevelText((m_currentLevel+1).ToString(), (m_CurrentSubLevel+1).ToString());
                     }
                 }
                 else
                 {
+                    GameManager.instance.StartListSpritesForPower(m_DataLevelStats[m_currentLevel].m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect);
+                    GameManager.instance.SetLevelText((m_currentLevel+1).ToString(), (m_CurrentSubLevel+1).ToString());
                     GameManager.instance.StartCanvaReady();
                 }
-                GameManager.instance.StartListSpritesForPower(m_DataLevelStats[m_currentLevel].m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect);
-                GameManager.instance.SetLevelText((m_currentLevel+1).ToString(), (m_CurrentSubLevel+1).ToString());
+
             }
             SetRandomIndex();
         }

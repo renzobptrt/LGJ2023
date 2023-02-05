@@ -27,18 +27,20 @@ public class Spawner : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        while(!won)
-        {
-            float speed = gLevel.m_CurrentSubLevel * 10;
-            speed += gLevel.m_DataLevelStats[gLevel.m_currentLevel].speed;
+        if(gLevel.m_currentLevel<gLevel.m_DataLevelStats.Count){
+            while(!won)
+            {
+                float speed = gLevel.m_CurrentSubLevel * 10;
+                speed += gLevel.m_DataLevelStats[gLevel.m_currentLevel].speed;
 
-            UpdateBlockSpeeds(speed);
+                UpdateBlockSpeeds(speed);
 
-            int q = gLevel.m_currentLevel * (2 + gLevel.m_CurrentSubLevel);
-            q = Random.Range(0, q+2);
-            for (int i = 0; i < q; i++) InstantiateBlock(speed);
-            
-            yield return new WaitForSeconds(0.2f);
+                int q = gLevel.m_currentLevel * (2 + gLevel.m_CurrentSubLevel);
+                q = Random.Range(0, q+2);
+                for (int i = 0; i < q; i++) InstantiateBlock(speed);
+                
+                yield return new WaitForSeconds(0.2f);
+            }
         }
     }
 

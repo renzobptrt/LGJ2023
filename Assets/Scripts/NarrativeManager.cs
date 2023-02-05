@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using static Callbacks;
 
 public class NarrativeManager : MonoBehaviour
 {
@@ -21,16 +22,16 @@ public class NarrativeManager : MonoBehaviour
         ShowDialog(2);
     }
 
-    public void ShowDialog( int numScenes )
+    public void ShowDialog( int numScenes, OnComplete onComplete = null )
     {
         didCurrSceneEnd = false;
         if(scenes[currentScene].background) background.sprite = scenes[currentScene].background;
         if(scenes[currentScene].character) character.sprite = scenes[currentScene].character;
         gameObject.SetActive(true);
-        StartCoroutine( NextDialog( numScenes ) );
+        StartCoroutine( NextDialog( numScenes, onComplete ) );
     }
 
-    IEnumerator NextDialog( int scenesLeft )
+    IEnumerator NextDialog( int scenesLeft, OnComplete onComplete = null)
     {
         while (scenesLeft > 0)
         {
@@ -42,7 +43,12 @@ public class NarrativeManager : MonoBehaviour
             currentScene ++;
             scenesLeft--;
         }
+
         gameObject.SetActive(false);
+
+        didCurrSceneEnd = true;
+
+        onComplete();
     }
 
     public void SkipDialog()
