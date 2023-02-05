@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
             m_TextCount.text = "Ready?";
             if(m_rmComboHealth.padding == Vector4.zero)
             {
-                m_rmComboHealth.padding = new Vector4( 0,0,0,504.72f );
+                m_rmComboHealth.padding = new Vector4( 0,0,0, m_rmComboHealth.canvasRect.height );
             }
             onComplete();
         }

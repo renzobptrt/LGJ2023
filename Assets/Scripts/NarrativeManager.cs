@@ -11,10 +11,15 @@ public class NarrativeManager : MonoBehaviour
 
     void Awake()
     {
-        // StartCoroutine(  );
+        StartCoroutine( NextDialog() );
     }
 
-    IEnumerator ShowDialog()
+    IEnumerator NextDialog()
+    {
+        yield return new WaitForSeconds(timePerDialog);
+    }
+
+    void ShowDialog()
     {
         
     }
