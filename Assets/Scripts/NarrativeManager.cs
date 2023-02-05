@@ -6,17 +6,18 @@ using UnityEngine.UI;
 
 public class NarrativeManager : MonoBehaviour
 {
-    [SerializeField] int currentScene = 1;
+    [SerializeField] int currentScene;
     [SerializeField] Image background;
     [SerializeField] Image character;
     [SerializeField] TextMeshProUGUI tmpro;
     public List<Scene> scenes;
-    public float timePerDialog = 3;
+    public float timePerDialog;
     // public bool didCurrSceneEnd = false;
 
     void Awake()
     {
         background = GetComponent<Image>();
+        currentScene = 0;
         ShowDialog();
     }
 
@@ -29,6 +30,13 @@ public class NarrativeManager : MonoBehaviour
         StartCoroutine( NextDialog() );
     }
 
+    void EndDialog()
+    {
+        currentScene ++;
+        gameObject.SetActive(false);
+        // didCurrSceneEnd = true;
+    }
+
     IEnumerator NextDialog()
     {
         foreach (string dialog in scenes[currentScene].dialogs)
@@ -36,9 +44,13 @@ public class NarrativeManager : MonoBehaviour
             tmpro.text = scenes[currentScene].charname + "\n" + dialog; 
             yield return new WaitForSeconds(timePerDialog);
         }
-        currentScene ++;
-        gameObject.SetActive(false);
-        // didCurrSceneEnd = true;
+        EndDialog();
+    }
+
+    public void SkipDialog()
+    {
+        StopCoroutine( NextDialog() );
+        EndDialog();
     }
 
 

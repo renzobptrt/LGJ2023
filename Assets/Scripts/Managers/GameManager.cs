@@ -35,14 +35,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(LoadMenu());
-    }
-    
-    IEnumerator LoadMenu()
-    {
-        //ESPERAR a que se muestre el primer dialogo
-        yield return new WaitForSeconds( narrativeManager.timePerDialog );
-
         m_ButtonLestGo.onClick.RemoveAllListeners();
         m_ButtonLestGo.onClick.AddListener(()=>{
             m_ButtonLestGo.interactable = false;

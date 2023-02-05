@@ -12,6 +12,7 @@ public class GameLevel : MonoBehaviour
     // public List<GameObject> combos;
     public RectMask2D rmComboHealth;
     public static GameLevel instance;
+    public NarrativeManager narrativeManager = null;
     //Data
     public List<DataLevelStatsClass> m_DataLevelStats = new List<DataLevelStatsClass>();
     float rootHealHeight = 0;
@@ -64,6 +65,7 @@ public class GameLevel : MonoBehaviour
 
     public void CheckIndexOfReference(int index)
     {   
+        //TODO: FIX INDEX OUT OF RANGE
         if(index == m_CurrentRandom)
         {
             GameManager.instance.SetSpritesForPower(m_CurrentIndexOfReference,1);
@@ -82,6 +84,7 @@ public class GameLevel : MonoBehaviour
                 if(m_CurrentSubLevel >= m_DataLevelStats[m_currentLevel].m_NumSubLevelsData.Count)
                 {
                     //Pasar al siguiente nivel
+                    narrativeManager.ShowDialog();
                     DataLevelStatsClass currLevel = m_DataLevelStats[m_currentLevel];
                     background.sprite = currLevel.background;
                     rootOk.sprite = currLevel.rootOk;
