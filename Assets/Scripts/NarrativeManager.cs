@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class NarrativeManager : MonoBehaviour
 {
-    [SerializeField] int currentScene = 0;
+    [SerializeField] int currentScene = 1;
     [SerializeField] Image background;
     [SerializeField] Image character;
     [SerializeField] TextMeshProUGUI tmpro;
@@ -20,7 +20,7 @@ public class NarrativeManager : MonoBehaviour
         ShowDialog();
     }
 
-    void ShowDialog()
+    public void ShowDialog()
     {
         didCurrSceneEnd = false;
         if(scenes[currentScene].background) background.sprite = scenes[currentScene].background;

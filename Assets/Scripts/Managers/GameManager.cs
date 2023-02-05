@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     //Elements
     public Button m_ButtonLestGo = null;
     public RectTransform m_PanelUI = null;
+    public NarrativeManager narrativeManager = null;
 
     public List<Image> m_ListPowerToDo = new List<Image>();
     public List<Sprite> m_ListSpritesForPower = new List<Sprite>();
@@ -34,11 +35,18 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(LoadMenu());
+    }
+    
+    void LoadMenu()
+    {
+        //ESPERAR a que se muestre el primer dialogo
+        yield return new WaitForSeconds( narrativeManager.timePerDialog );
         m_ButtonLestGo.onClick.RemoveAllListeners();
         m_ButtonLestGo.onClick.AddListener(()=>{
             m_ButtonLestGo.interactable = false;
             AnimationCount(3,()=>{
-                    canvas.DOFade(0f,0.5f).OnComplete(()=>{
+                    canvas.DOFade(0f,0.25f).OnComplete(()=>{
                     canvas.blocksRaycasts = false;
                 });
             });
@@ -47,7 +55,7 @@ public class GameManager : MonoBehaviour
         m_ButtonContinue.onClick.RemoveAllListeners();
         m_ButtonContinue.onClick.AddListener(()=>{
             m_ButtonContinue.interactable = false;
-            m_CanvasRestart.DOFade(0f,0.5f).OnComplete(()=>{
+            m_CanvasRestart.DOFade(0f,0.25f).OnComplete(()=>{
                 m_CanvasRestart.blocksRaycasts = false;
             });
             StartCanvaReady();
