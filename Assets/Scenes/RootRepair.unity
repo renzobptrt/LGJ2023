@@ -4300,6 +4300,7 @@ MonoBehaviour:
   gLevel: {fileID: 2030823741}
   bound: 0
   yTop: 0
+  prevLvl: 0
   won: 0
 --- !u!1 &2029502902
 GameObject:
@@ -4493,7 +4494,7 @@ MonoBehaviour:
     rootSick: {fileID: 21300000, guid: 1cea49966302677409e4e0a62173accd, type: 3}
     rootOk: {fileID: 21300000, guid: d93cfeedf67e032449139900a2edad2f, type: 3}
     newSnake: {fileID: 4138395873301767688, guid: e174964ae71a99c47937b9363247b858, type: 3}
-    velocity: 0
+    speed: 64
   - m_NumSubLevelsData:
     - m_NumCorrect: 2
     - m_NumCorrect: 3
@@ -4502,7 +4503,7 @@ MonoBehaviour:
     rootSick: {fileID: 21300000, guid: abdeeea326802714ab922edc5870ab19, type: 3}
     rootOk: {fileID: 21300000, guid: fe4c2f984f025ca4b92773f6d64b71a7, type: 3}
     newSnake: {fileID: 4446640577783624341, guid: 14ce5234dceeadd48a146f830461e339, type: 3}
-    velocity: 0
+    speed: 196
   - m_NumSubLevelsData:
     - m_NumCorrect: 2
     - m_NumCorrect: 3
@@ -4513,7 +4514,7 @@ MonoBehaviour:
     rootSick: {fileID: 21300000, guid: c4860bf02a5064f4db33b961178bf39f, type: 3}
     rootOk: {fileID: 21300000, guid: 015c3b8a75736f74db278bfa5739901e, type: 3}
     newSnake: {fileID: 0}
-    velocity: 0
+    speed: 512
   m_currentCombImg: {fileID: 210301843}
   m_ListItems: []
   background: {fileID: 1760321969}

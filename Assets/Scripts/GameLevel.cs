@@ -74,6 +74,7 @@ public class GameLevel : MonoBehaviour
             {
                 //Resetear Numero de Combos Acertados
                 m_CurrentIndexOfReference = 0;
+
                 //Subir siguiente sub nivel
                 m_CurrentSubLevel++;
                 
@@ -84,6 +85,10 @@ public class GameLevel : MonoBehaviour
                 if(m_CurrentSubLevel >= m_DataLevelStats[m_currentLevel].m_NumSubLevelsData.Count)
                 {
                     //Pasar al siguiente nivel
+
+                    //Eliminar a la ardilla
+                    if (m_currentLevel == 0) blocksPrefabs.RemoveAt(0);
+                    
                     narrativeManager.ShowDialog();
                     DataLevelStatsClass currLevel = m_DataLevelStats[m_currentLevel];
                     background.sprite = currLevel.background;
@@ -138,8 +143,8 @@ public class GameLevel : MonoBehaviour
     }
 
     //Private variables
-    private int m_currentLevel = 0;
-    private int m_CurrentSubLevel= 0;
+    public int m_currentLevel {private set; get;}
+    public int m_CurrentSubLevel {private set; get;}
     private int m_CurrentIndexOfReference = 0;
     private int m_CurrentRandom = 0;
     [SerializeField] Image m_currentCombImg;
@@ -162,7 +167,7 @@ public class GameLevel : MonoBehaviour
         public Sprite rootSick;
         public Sprite rootOk;
         public GameObject newSnake;
-        public float velocity;
+        public float speed;
     }
 
     [System.Serializable]
