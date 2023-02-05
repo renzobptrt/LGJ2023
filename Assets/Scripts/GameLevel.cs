@@ -104,7 +104,7 @@ public class GameLevel : MonoBehaviour
 
                     if(m_currentLevel >= m_DataLevelStats.Count)
                     {
-                        Debug.Log("GANASTE EL JUEGO");
+                        GameManager.instance.LoadLevel(2);
                     }else
                     {
                         GameManager.instance.StartCanvaReady();
