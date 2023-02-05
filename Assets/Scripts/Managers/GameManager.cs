@@ -58,10 +58,10 @@ public class GameManager : MonoBehaviour
             m_ListPowerToDo[i].sprite = m_ListSpritesForPower[0];
         }
     }
-    
-    public void SetDoneSpritesForPower(int index)
+
+    public void SetSpritesForPower(int index, int isDone)
     {
-        m_ListPowerToDo[index].sprite = m_ListSpritesForPower[1];
+        m_ListPowerToDo[index].sprite = m_ListSpritesForPower[isDone];
     }
 
     public void StartCanvaReady()

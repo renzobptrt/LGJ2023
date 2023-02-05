@@ -60,7 +60,7 @@ public class GameLevel : MonoBehaviour
     {   
         if(index == m_CurrentRandom)
         {
-            GameManager.instance.SetDoneSpritesForPower(m_CurrentIndexOfReference);
+            GameManager.instance.SetSpritesForPower(m_CurrentIndexOfReference,1);
             m_CurrentIndexOfReference++;
             if(m_CurrentIndexOfReference >= m_DataLevelStats.m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect)
             {
@@ -93,6 +93,7 @@ public class GameLevel : MonoBehaviour
         else
         {
             m_CurrentIndexOfReference = m_CurrentIndexOfReference == 0 ? 0 : m_CurrentIndexOfReference - 1;
+            GameManager.instance.SetSpritesForPower(m_CurrentIndexOfReference,0);
         }
 
     }
