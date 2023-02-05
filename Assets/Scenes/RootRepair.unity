@@ -3550,6 +3550,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_audioMixer: {fileID: 24100000, guid: b978ce474a310554086b45e49d2ca594, type: 2}
+  m_backgroundSource: {fileID: 1804549073}
+  m_sfxSource: {fileID: 1804549072}
+  m_masterSource: {fileID: 1804549071}
 --- !u!224 &1804549070
 RectTransform:
   m_ObjectHideFlags: 0

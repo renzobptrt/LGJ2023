@@ -13,11 +13,11 @@ public class SoundManager : MonoBehaviour
     public AudioMixer AudioMixer { get => m_audioMixer; set => m_audioMixer = value; }
 
     //AudioSources
-    private AudioSource m_backgroundSource = null;
+    public AudioSource m_backgroundSource = null;
     public AudioSource BackgroundSource { get => m_backgroundSource; set => m_backgroundSource = value; }
-    private AudioSource m_sfxSource = null;
+    public AudioSource m_sfxSource = null;
     public AudioSource SfxSource { get => m_sfxSource; set => m_sfxSource = value; }
-    private AudioSource m_masterSource;
+    public AudioSource m_masterSource;
     public AudioSource MasterSource { get => m_masterSource; set => m_masterSource = value; }
 
     //Background AudioClip
@@ -46,9 +46,6 @@ public class SoundManager : MonoBehaviour
         }
 
         AudioMixer = Resources.Load("MasterAudioMixer") as AudioMixer;
-        BackgroundSource = GetComponent<AudioSource>();
-        SfxSource = GetComponent<AudioSource>();
-        MasterSource = GetComponent<AudioSource>();
     }
 
     private void Start()
