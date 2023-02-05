@@ -1091,8 +1091,8 @@ MonoBehaviour:
     character: {fileID: 0}
     charname: 
     dialogs:
-    - "Las serpientes, como plagas de Helheim, corroen las ra\xEDces de Yggdrasil
-      con una premura tal que el poder de las Normas insuficiente es para su salvaci\xF3n."
+    - "Las serpientes, como plagas de Helheim, corroen las ra\xEDces de Yggdrasil,
+      con una premura tal que el poder de las Normas yace insuficiente para su salvaci\xF3n."
   - background: {fileID: 0}
     character: {fileID: 0}
     charname: Heimdall
@@ -1100,8 +1100,8 @@ MonoBehaviour:
     - "Seidr, id donde Normas y que ellas te otorgen un roc\xEDo del agua que derraman
       del pozo de Urdarbrunnr, para la sanaci\xF3n de las ra\xEDces y de nuestros
       mundos."
-    - "Luego, habr\xE1s de ir a Mimir, y rogar por su sabidur\xEDa para la derrota
-      del drag\xF3n Nidhogg."
+    - "Luego, habr\xE1s de ir a Mimir, y rogar por su sabidur\xEDa para al drag\xF3n
+      Nidhogg derrotar."
   - background: {fileID: 0}
     character: {fileID: 0}
     charname: Normas
@@ -1129,15 +1129,10 @@ MonoBehaviour:
   - background: {fileID: 0}
     character: {fileID: 0}
     charname: 
-    dialogs: []
-  - background: {fileID: 0}
-    character: {fileID: 0}
-    charname: 
     dialogs:
-    - "La guerra contra el drag\xF3n ha cesado."
-    - "Con el poder de su voluntad y la de los cuidadores de este mundo y los otros,
-      el Seidr ha derrotado a los peligros que acechan las ra\xEDces del \xE1rbol
-      de la vida."
+    - "La guerra contra el drag\xF3n ha cesado. Con el poder de su voluntad y la
+      de los cuidadores de este mundo y los otros, el Seidr ha derrotado a los peligros
+      que acechan las ra\xEDces del \xE1rbol de la vida."
   timePerDialog: 5
 --- !u!1 &405966463
 GameObject:
