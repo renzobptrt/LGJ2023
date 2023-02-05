@@ -194,7 +194,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 396148983}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -230,8 +230,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 1024
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 24
@@ -395,6 +395,82 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!1 &118432698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 118432699}
+  - component: {fileID: 118432701}
+  - component: {fileID: 118432700}
+  m_Layer: 5
+  m_Name: BgText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &118432699
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118432698}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 396148983}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 16}
+  m_SizeDelta: {x: -32, y: 240}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &118432700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118432698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.3137255}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &118432701
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118432698}
+  m_CullTransparentMesh: 1
 --- !u!1 &210301841
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,6 +823,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1645954863}
+  - {fileID: 118432699}
   - {fileID: 94127089}
   - {fileID: 1589066262}
   m_Father: {fileID: 303630472}
@@ -812,14 +889,14 @@ MonoBehaviour:
   character: {fileID: 1645954864}
   tmpro: {fileID: 94127090}
   scenes:
-  - background: {fileID: 21300000, guid: 02d6cad7bd872d9459c6c477ebbebccb, type: 3}
+  - background: {fileID: 21300000, guid: 21e93e2483c3cc1429c92c634dabf149, type: 3}
     character: {fileID: 0}
     charname: 
     dialogs:
     - "Las serpientes, como plagas de Helheim, corroen las ra\xEDces de Yggdrasil,
       con una premura tal que el poder de las Normas yace insuficiente para su salvaci\xF3n."
-  - background: {fileID: 0}
-    character: {fileID: 0}
+  - background: {fileID: 21300000, guid: 21e93e2483c3cc1429c92c634dabf149, type: 3}
+    character: {fileID: 21300000, guid: 4df9195c8db329f46af09308c50ed9d4, type: 3}
     charname: Heimdall
     dialogs:
     - "Seidr, id donde Normas y que ellas te otorgen un roc\xEDo del agua que derraman
@@ -859,6 +936,7 @@ MonoBehaviour:
       de los cuidadores de este mundo y los otros, el Seidr ha derrotado a los peligros
       que acechan las ra\xEDces del \xE1rbol de la vida."
   timePerDialog: 5
+  didCurrSceneEnd: 0
 --- !u!1 &405966463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,7 +1284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448ccd4182256f842bcd0a5ff02edf41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 2013022735}
   m_ButtonLestGo: {fileID: 8107201209440473637}
   m_PanelUI: {fileID: 1654993619}
   narrativeManager: {fileID: 396148986}
@@ -2285,7 +2362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6064589681130349689, guid: d6ac3483ed506434b836f95b7959a848, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6064589681130349689, guid: d6ac3483ed506434b836f95b7959a848, type: 3}
       propertyPath: m_AnchorMax.x
