@@ -25,7 +25,12 @@ public class NarrativeManager : MonoBehaviour
     {
         didCurrSceneEnd = false;
         if(scenes[currentScene].background) background.sprite = scenes[currentScene].background;
-        if(scenes[currentScene].character) character.sprite = scenes[currentScene].character;
+        if(scenes[currentScene].character)
+        {
+            character.sprite = scenes[currentScene].character;
+            character.enabled = true;
+        }
+        else character.enabled = false;
         gameObject.SetActive(true);
         StartCoroutine( NextDialog( numScenes ) );
     }
