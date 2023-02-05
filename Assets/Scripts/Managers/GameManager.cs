@@ -88,13 +88,17 @@ public class GameManager : MonoBehaviour
         }
         else{
             m_TextCount.text = "Ready?";
+            if(m_rmComboHealth.padding == Vector4.zero)
+            {
+                m_rmComboHealth.padding = new Vector4( 0,0,0,504.72f );
+            }
             onComplete();
         }
     }
 
-    public void SetLevelText(string newText)
+    public void SetLevelText(string newLevelText, string newSubLevelText)
     {
-        m_TextLevel.text = "Level " + newText;
+        m_TextLevel.text = "Level " + newLevelText + " - " + newSubLevelText;
     }
 
     void StartGameSubLevel()
@@ -109,5 +113,6 @@ public class GameManager : MonoBehaviour
     //Private Vari
     [SerializeField] private TextMeshProUGUI m_TextCount = null;
     [SerializeField] private TextMeshProUGUI m_TextLevel = null;
+    [SerializeField] private RectMask2D m_rmComboHealth = null;
     private CanvasGroup canvas = null;
 }
