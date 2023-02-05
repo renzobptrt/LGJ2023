@@ -58,10 +58,10 @@ public class GameManager : MonoBehaviour
             m_ListPowerToDo[i].sprite = m_ListSpritesForPower[0];
         }
     }
-    
-    public void SetDoneSpritesForPower(int index)
+
+    public void SetSpritesForPower(int index, int isDone)
     {
-        m_ListPowerToDo[index].sprite = m_ListSpritesForPower[1];
+        m_ListPowerToDo[index].sprite = m_ListSpritesForPower[isDone];
     }
 
     public void StartCanvaReady()
@@ -88,8 +88,17 @@ public class GameManager : MonoBehaviour
         }
         else{
             m_TextCount.text = "Ready?";
+            if(m_rmComboHealth.padding == Vector4.zero)
+            {
+                m_rmComboHealth.padding = new Vector4( 0,0,0,504.72f );
+            }
             onComplete();
         }
+    }
+
+    public void SetLevelText(string newLevelText, string newSubLevelText)
+    {
+        m_TextLevel.text = "Level " + newLevelText + " - " + newSubLevelText;
     }
 
     void StartGameSubLevel()
@@ -103,5 +112,7 @@ public class GameManager : MonoBehaviour
 
     //Private Vari
     [SerializeField] private TextMeshProUGUI m_TextCount = null;
+    [SerializeField] private TextMeshProUGUI m_TextLevel = null;
+    [SerializeField] private RectMask2D m_rmComboHealth = null;
     private CanvasGroup canvas = null;
 }

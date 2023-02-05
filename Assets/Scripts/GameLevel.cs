@@ -13,7 +13,7 @@ public class GameLevel : MonoBehaviour
     public RectMask2D rmComboHealth;
     public static GameLevel instance;
     //Data
-    public DataLevelStatsClass m_DataLevelStats = new DataLevelStatsClass();
+    public List<DataLevelStatsClass> m_DataLevelStats = new List<DataLevelStatsClass>();
     float rootHealHeight = 0;
 
     private void Awake()
@@ -29,7 +29,7 @@ public class GameLevel : MonoBehaviour
         }
 
         //HEIGHT | Altura por cantidad de combos del nivel actual
-        rootHealHeight = rmComboHealth.canvasRect.height / m_DataLevelStats.m_NumSubLevelsData.Count;
+        rootHealHeight = rmComboHealth.canvasRect.height / m_DataLevelStats[m_currentLevel].m_NumSubLevelsData.Count;
         rmComboHealth.padding = new Vector4( 0,0,0,rmComboHealth.canvasRect.height );
     }
 
@@ -37,7 +37,8 @@ public class GameLevel : MonoBehaviour
     {
         //Set First Index
         SetRandomIndex();
-        GameManager.instance.StartListSpritesForPower(m_DataLevelStats.m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect);
+        GameManager.instance.StartListSpritesForPower(m_DataLevelStats[m_currentLevel].m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect);
+        GameManager.instance.SetLevelText((m_currentLevel+1).ToString(), (m_CurrentSubLevel+1).ToString());
     }
 
     public void AddListItems(Button newButton, int index)
@@ -50,49 +51,69 @@ public class GameLevel : MonoBehaviour
                 CheckIndexOfReference(temp);
                 m_ListItems.Remove(newButton);
                 Destroy(newButton.transform.gameObject);
-            }
+            } 
         );
 
         m_ListItems.Add(newButton);
+    }
+
+    public void RemoveListButton(Button currentButton)
+    {
+        m_ListItems.Remove(currentButton);
     }
 
     public void CheckIndexOfReference(int index)
     {   
         if(index == m_CurrentRandom)
         {
-            GameManager.instance.SetDoneSpritesForPower(m_CurrentIndexOfReference);
+            GameManager.instance.SetSpritesForPower(m_CurrentIndexOfReference,1);
             m_CurrentIndexOfReference++;
-            if(m_CurrentIndexOfReference >= m_DataLevelStats.m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect)
+            if(m_CurrentIndexOfReference >= m_DataLevelStats[m_currentLevel].m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect)
             {
+                //Resetear Numero de Combos Acertados
+                m_CurrentIndexOfReference = 0;
+                //Subir siguiente sub nivel
                 m_CurrentSubLevel++;
+                
                 rmComboHealth.padding = new Vector4( 0,0,0,rmComboHealth.padding.w - rootHealHeight );
-                GameManager.instance.StartListSpritesForPower(m_DataLevelStats.m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect);
+                Debug.Log(  rmComboHealth.padding.w + " - " + (rmComboHealth.padding.w - rootHealHeight));
                 //Cambiar sprite
-
-                if(m_CurrentSubLevel >= m_DataLevelStats.m_NumSubLevelsData.Count)
-                {
-                    //Salir a pantalla final
-                    Debug.Log("Salvaste a la planta");
-                }
-                else
+                
+                if(m_CurrentSubLevel >= m_DataLevelStats[m_currentLevel].m_NumSubLevelsData.Count)
                 {
                     //Pasar al siguiente nivel
-                    m_CurrentIndexOfReference = 0;
-                    DataSubLevelStatsClass currLevel = m_DataLevelStats.m_NumSubLevelsData[m_CurrentSubLevel];
+                    DataLevelStatsClass currLevel = m_DataLevelStats[m_currentLevel];
                     background.sprite = currLevel.background;
                     rootOk.sprite = currLevel.rootOk;
                     rootSick.sprite = currLevel.rootSick;
-                    blocksPrefabs.Add(currLevel.newSnake);
-                    
-                    GameManager.instance.StartCanvaReady();
+                        
+                    if(currLevel.newSnake!= null) blocksPrefabs.Add(currLevel.newSnake);
 
+                    //Resetear Numero el Subnivel Actual del Nivel
+                    m_CurrentSubLevel = 0;
+                    m_currentLevel++;
+
+                    if(m_currentLevel >= m_DataLevelStats.Count)
+                    {
+                        Debug.Log("GANASTE EL JUEGO");
+                    }else
+                    {
+                        GameManager.instance.StartCanvaReady();
+                    }
                 }
+                else
+                {
+                    GameManager.instance.StartCanvaReady();
+                }
+                GameManager.instance.StartListSpritesForPower(m_DataLevelStats[m_currentLevel].m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect);
+                GameManager.instance.SetLevelText((m_currentLevel+1).ToString(), (m_CurrentSubLevel+1).ToString());
             }
             SetRandomIndex();
         }
         else
         {
             m_CurrentIndexOfReference = m_CurrentIndexOfReference == 0 ? 0 : m_CurrentIndexOfReference - 1;
+            GameManager.instance.SetSpritesForPower(m_CurrentIndexOfReference,0);
         }
 
     }
@@ -104,6 +125,7 @@ public class GameLevel : MonoBehaviour
     }
 
     //Private variables
+    private int m_currentLevel = 0;
     private int m_CurrentSubLevel= 0;
     private int m_CurrentIndexOfReference = 0;
     private int m_CurrentRandom = 0;
@@ -123,16 +145,17 @@ public class GameLevel : MonoBehaviour
     public class DataLevelStatsClass
     {
         public List<DataSubLevelStatsClass> m_NumSubLevelsData = new List<DataSubLevelStatsClass>();
+        public Sprite background;
+        public Sprite rootSick;
+        public Sprite rootOk;
+        public GameObject newSnake;
+        public float velocity;
     }
 
     [System.Serializable]
     public class DataSubLevelStatsClass
     {
         public int m_NumCorrect = 0;
-        public Sprite background;
-        public Sprite rootSick;
-        public Sprite rootOk;
-        public GameObject newSnake;
     }
 
 }

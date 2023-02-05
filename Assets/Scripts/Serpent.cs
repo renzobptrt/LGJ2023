@@ -10,19 +10,14 @@ public class Serpent : MonoBehaviour
 
     void Awake()
     {
-        // maxY = Camera.main.orthographicSize;
+
         Vector2 currSize = GetComponent<RectTransform>().sizeDelta;
         maxY = currSize.y;
-        
-        //
-        //btn.onClick.AddListener(OnMouseDown);
     }
 
     void Start()
     {
-        Button btn = this.gameObject.GetComponent<Button>();
-        //if(btn != null)
-            //GameLevel.instance.AddListItems(btn,m_IndexBlock);
+        m_Button = this.gameObject.GetComponent<Button>();
     }
     
     void Update()
@@ -30,16 +25,12 @@ public class Serpent : MonoBehaviour
         transform.Translate(Vector3.down * Time.deltaTime * speed);
         
         if (transform.position.y < -(maxY + 5)) {
+            GameLevel.instance.RemoveListButton(m_Button);
             Destroy(gameObject);
         }
     }
-
-    // void OnMouseDown()
-    // {
-    //     Destroy(gameObject);
-    // }
-
+    
     //Private
     [SerializeField] private float maxY;
-
+    private Button m_Button;
 }
