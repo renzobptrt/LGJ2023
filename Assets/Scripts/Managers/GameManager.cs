@@ -42,7 +42,46 @@ public class GameManager : MonoBehaviour
                 });
             });
         });
+        
+        //Canvas
         canvas =  m_PanelUI.GetComponent<CanvasGroup>();
+        m_CanvasRestart = m_PanelEnd.GetComponent<CanvasGroup>();
+
+        m_NumLifes = m_ListLifes.Count;
+    }
+
+    public bool CheckWrongChoice()
+    {
+        m_NumLifes--;
+
+        if(m_NumLifes<0)
+        {
+            //Pantalla fin
+            m_CanvasRestart.DOFade(1f,0.5f);
+            return true;
+        }
+        else
+        {
+            float newAlpha =  0f;
+            Color newColor =  m_ListLifes[m_NumLifes].color;
+            newColor.a = newAlpha;
+            m_ListLifes[m_NumLifes].color = newColor;
+            return false;
+        }
+    }
+
+
+
+    public void RestartLife()
+    {
+        m_NumLifes = m_ListLifes.Count;
+        foreach(Image im in m_ListLifes)
+        {
+            float newAlpha =  1f;
+            Color newColor = im.color;
+            newColor.a = newAlpha;
+            im.color = newColor;
+        }
     }
     
     public void StartListSpritesForPower(int count)
@@ -114,5 +153,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_TextCount = null;
     [SerializeField] private TextMeshProUGUI m_TextLevel = null;
     [SerializeField] private RectMask2D m_rmComboHealth = null;
+    [SerializeField] private List<Image> m_ListLifes = new List<Image>();
+    [SerializeField] private RectTransform m_PanelEnd= null;
+    [SerializeField] private Button ContinueButton = null;
     private CanvasGroup canvas = null;
+    private CanvasGroup m_CanvasRestart = null;
+    private CanvasGroup m_CanvasFinish = null;
+    private int m_NumLifes = 3;
 }

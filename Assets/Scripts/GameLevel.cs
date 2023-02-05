@@ -76,7 +76,7 @@ public class GameLevel : MonoBehaviour
                 m_CurrentSubLevel++;
                 
                 rmComboHealth.padding = new Vector4( 0,0,0,rmComboHealth.padding.w - rootHealHeight );
-                Debug.Log(  rmComboHealth.padding.w + " - " + (rmComboHealth.padding.w - rootHealHeight));
+
                 //Cambiar sprite
                 
                 if(m_CurrentSubLevel >= m_DataLevelStats[m_currentLevel].m_NumSubLevelsData.Count)
@@ -112,10 +112,20 @@ public class GameLevel : MonoBehaviour
         }
         else
         {
-            m_CurrentIndexOfReference = m_CurrentIndexOfReference == 0 ? 0 : m_CurrentIndexOfReference - 1;
-            GameManager.instance.SetSpritesForPower(m_CurrentIndexOfReference,0);
+            if(m_CurrentIndexOfReference == 0 )
+            {
+                //Quitar vida
+                bool isRestart = GameManager.instance.CheckWrongChoice() ;
+                if (isRestart) 
+                {
+                    GameManager.instance.StartListSpritesForPower(m_DataLevelStats[m_currentLevel].m_NumSubLevelsData[m_CurrentSubLevel].m_NumCorrect);
+                }
+            }else
+            {
+                m_CurrentIndexOfReference = m_CurrentIndexOfReference == 0 ? 0 : m_CurrentIndexOfReference - 1;
+                GameManager.instance.SetSpritesForPower(m_CurrentIndexOfReference,0);
+            }
         }
-
     }
 
     public void SetRandomIndex()
