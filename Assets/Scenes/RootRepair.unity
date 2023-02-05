@@ -947,7 +947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4829ef65f99e17f4aa76ad57aa5efedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScene: 1
+  currentScene: 0
   background: {fileID: 0}
   character: {fileID: 1645954864}
   tmpro: {fileID: 94127090}
@@ -1004,7 +1004,6 @@ MonoBehaviour:
       el Seidr ha derrotado a los peligros que acechan las ra\xEDces del \xE1rbol
       de la vida."
   timePerDialog: 3
-  didCurrSceneEnd: 0
 --- !u!1 &405966463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,6 +1488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ButtonLestGo: {fileID: 1864306585}
   m_PanelUI: {fileID: 1654993619}
+  narrativeManager: {fileID: 396148986}
   m_ListPowerToDo:
   - {fileID: 993389224}
   - {fileID: 1997396821}

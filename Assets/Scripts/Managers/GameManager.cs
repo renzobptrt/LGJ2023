@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         //ESPERAR a que se muestre el primer dialogo
         yield return new WaitForSeconds( narrativeManager.timePerDialog );
+
         m_ButtonLestGo.onClick.RemoveAllListeners();
         m_ButtonLestGo.onClick.AddListener(()=>{
             m_ButtonLestGo.interactable = false;
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour
         m_ButtonContinue.onClick.RemoveAllListeners();
         m_ButtonContinue.onClick.AddListener(()=>{
             m_ButtonContinue.interactable = false;
-            m_CanvasRestart.DOFade(0f,0.25f).OnComplete(()=>{
+            m_CanvasRestart.DOFade(0f,0.5f).OnComplete(()=>{
                 m_CanvasRestart.blocksRaycasts = false;
             });
             StartCanvaReady();
@@ -144,8 +145,8 @@ public class GameManager : MonoBehaviour
         if(number>0)
         {
             m_TextCount.text = number.ToString();
-            m_TextCount.transform.GetComponent<RectTransform>().DOScale(1,0.5f).OnComplete(()=>{
-                m_TextCount.transform.GetComponent<RectTransform>().DOScale(0,0.5f).OnComplete(()=>{
+            m_TextCount.transform.GetComponent<RectTransform>().DOScale(1,0.33f).OnComplete(()=>{
+                m_TextCount.transform.GetComponent<RectTransform>().DOScale(0,0.33f).OnComplete(()=>{
                     number--;
                     AnimationCount(number,onComplete);
                 });
